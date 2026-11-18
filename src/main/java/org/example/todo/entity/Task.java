@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -23,12 +23,12 @@ public class Task {
     @Column(name="title",nullable = false)
     private String title;
 
-    @Column(name="Desciption",nullable = false)
+    @Column(name="desciption",nullable = false)
     private String description;
 
-    @Column(name="DueDate",nullable = false)
-    private LocalDateTime dueDate;
+    @Column(name="due_date",nullable = false)
+    private LocalDate dueDate;
 
-    @Column(name="Completed",nullable = false)
+    @Column(name="completed",nullable = false)
     private boolean completed;
 }

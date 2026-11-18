@@ -4,7 +4,7 @@ import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public record TaskRequest(
         @NotBlank(message = "Task tittle is required")
@@ -15,7 +15,7 @@ public record TaskRequest(
         String description,
 
         @Future(message = "Due date must be in the future")
-        LocalDateTime dueDate,
+        LocalDate dueDate,
 
         boolean completed
 ) {

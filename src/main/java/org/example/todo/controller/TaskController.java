@@ -17,4 +17,64 @@ import java.util.List;
 public class TaskController {
 
 
+    private final TaskService taskService;
+
+    public TaskController(TaskService taskService) {
+        this.taskService = taskService;
+    }
+
+    // CREATE
+    @PostMapping
+    public ResponseEntity<TaskResponse> createStudent(
+            @Valid @RequestBody TaskRequest request) {
+
+        TaskResponse response =
+                taskService.createTask(request);
+
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(response);
+    }
+
+    // READ ALL
+    @GetMapping
+    public ResponseEntity<List<TaskResponse>> getAllStudents() {
+
+        return ResponseEntity.ok(
+                taskService.getAllTasks()
+        );
+    }
+
+    // READ ONE
+    @GetMapping("/{id}")
+    public ResponseEntity<TaskResponse> getStudentById(
+            @PathVariable Long id) {
+
+        return ResponseEntity.ok(
+                taskService.getTaskById(id)
+        );
+    }
+
+    // UPDATE
+    @PutMapping("/{id}")
+    public ResponseEntity<TaskResponse> updateStudent(
+            @PathVariable Long id,
+            @Valid @RequestBody TaskRequest request) {
+
+        return ResponseEntity.ok(
+                taskService.updateTask(id, request)
+        );
+    }
+
+    // DELETE
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteStudent(
+            @PathVariable Long id) {
+
+        taskService.deleteTask(id);
+
+        return ResponseEntity.noContent().build();
+    }
+
+
 }
