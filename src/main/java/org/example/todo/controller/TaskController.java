@@ -25,7 +25,7 @@ public class TaskController {
 
     // CREATE
     @PostMapping
-    public ResponseEntity<TaskResponse> createStudent(
+    public ResponseEntity<TaskResponse> createTask(
             @Valid @RequestBody TaskRequest request) {
 
         TaskResponse response =
@@ -38,7 +38,7 @@ public class TaskController {
 
     // READ ALL
     @GetMapping
-    public ResponseEntity<List<TaskResponse>> getAllStudents() {
+    public ResponseEntity<List<TaskResponse>> getAllTasks() {
 
         return ResponseEntity.ok(
                 taskService.getAllTasks()
@@ -47,7 +47,7 @@ public class TaskController {
 
     // READ ONE
     @GetMapping("/{id}")
-    public ResponseEntity<TaskResponse> getStudentById(
+    public ResponseEntity<TaskResponse> getTaskById(
             @PathVariable Long id) {
 
         return ResponseEntity.ok(
@@ -57,7 +57,7 @@ public class TaskController {
 
     // UPDATE
     @PutMapping("/{id}")
-    public ResponseEntity<TaskResponse> updateStudent(
+    public ResponseEntity<TaskResponse> updateTask(
             @PathVariable Long id,
             @Valid @RequestBody TaskRequest request) {
 
@@ -68,7 +68,7 @@ public class TaskController {
 
     // DELETE
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteStudent(
+    public ResponseEntity<Void> deleteTask(
             @PathVariable Long id) {
 
         taskService.deleteTask(id);
